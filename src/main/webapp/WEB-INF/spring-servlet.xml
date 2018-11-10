@@ -10,16 +10,24 @@
     <!-- 启动注解驱动的spring mvc 功能 -->
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <bean class="com.mmall.common.HttpInterceptor" />
+    </mvc:interceptors>
+
     <!-- 包扫描 -->
     <context:component-scan base-package="com.mmall.controller" />
     <context:component-scan base-package="com.mmall.service" />
 
-   <!-- <bean class="com.mmall.common.SpringExceptionResolver" />-->
+    <bean class="com.mmall.common.SpringExceptionResolver" />
+
+    <bean class="com.mmall.common.ApplicationContextHelper" lazy-init="false" />
 
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 
+    <!-- json方式返回数据 -->
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 
+    <!-- 页面方式返回数据 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".jsp" />
