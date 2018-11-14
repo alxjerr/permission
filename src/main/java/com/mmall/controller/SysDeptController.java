@@ -42,7 +42,4 @@ public class SysDeptController {
         sysDeptService.update(param);
         return JsonData.success();
     }
-
-
-
 }
